@@ -13,7 +13,7 @@ import javax.crypto.SecretKey
 
 class AndroidKeyStoreRepository {
 
-    val LOCAL_PRIVATE_KEY = "LOCAL_PRIVATE_KEY"
+    val LOCAL_KEY_PAIR = "LOCAL_PRIVATE_KEY"
     val ANDROID_KEYSTORE_PROVIDER = "AndroidKeyStore"
 
     @RequiresApi(Build.VERSION_CODES.S)
@@ -24,7 +24,7 @@ class AndroidKeyStoreRepository {
             ANDROID_KEYSTORE_PROVIDER
         )
         val parameterSpec: KeyGenParameterSpec = KeyGenParameterSpec.Builder(
-            LOCAL_PRIVATE_KEY,
+            LOCAL_KEY_PAIR,
             KeyProperties.PURPOSE_SIGN or KeyProperties.PURPOSE_VERIFY
                     or KeyProperties.PURPOSE_AGREE_KEY
         ).run {
@@ -45,7 +45,7 @@ class AndroidKeyStoreRepository {
         val keyStore = KeyStore.getInstance(ANDROID_KEYSTORE_PROVIDER)
         keyStore.load(null)
 
-        val localKeypair = keyStore.getEntry(LOCAL_PRIVATE_KEY, null) as KeyStore.PrivateKeyEntry
+        val localKeypair = keyStore.getEntry(LOCAL_KEY_PAIR, null) as KeyStore.PrivateKeyEntry
 
         val keyAgreement: KeyAgreement = KeyAgreement.getInstance("ECDH", ANDROID_KEYSTORE_PROVIDER)
         keyAgreement.init(localKeypair.privateKey)
