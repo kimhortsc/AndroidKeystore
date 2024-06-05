@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tvPlainText"
+        android:id="@+id/tvAes256"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -31,7 +31,7 @@
         app:layout_constraintBaseline_toBaselineOf="@id/btnEncryptText"
         app:layout_constraintEnd_toStartOf="@+id/btnEncryptText"
         app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toStartOf="@id/tvPlainText" />
+        app:layout_constraintStart_toStartOf="@id/tvAes256" />
 
     <Button
         android:id="@+id/btnEncryptText"
@@ -39,10 +39,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Encrypt"
-        app:layout_constraintEnd_toEndOf="@+id/tvPlainText"
+        app:layout_constraintEnd_toEndOf="@+id/tvAes256"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvEncryptedText"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlainText" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAes256" />
 
     <TextView
         android:id="@+id/tvDecryptedText"

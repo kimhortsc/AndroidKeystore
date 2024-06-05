@@ -5,6 +5,7 @@ import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import androidx.annotation.RequiresApi
+import java.security.KeyPair
 import java.security.KeyPairGenerator
 import java.security.KeyStore
 import java.security.PublicKey
@@ -13,11 +14,13 @@ import javax.crypto.SecretKey
 
 class AndroidKeyStoreRepository {
 
-    val LOCAL_KEY_PAIR = "LOCAL_PRIVATE_KEY"
-    val ANDROID_KEYSTORE_PROVIDER = "AndroidKeyStore"
+    companion object {
+        const val LOCAL_KEY_PAIR = "LOCAL_PRIVATE_KEY"
+        const val ANDROID_KEYSTORE_PROVIDER = "AndroidKeyStore"
+    }
 
     @RequiresApi(Build.VERSION_CODES.S)
-    fun generateKeypair() {
+    fun generateKeypair(): KeyPair {
 
         val kpg: KeyPairGenerator = KeyPairGenerator.getInstance(
             KeyProperties.KEY_ALGORITHM_EC,
@@ -27,16 +30,18 @@ class AndroidKeyStoreRepository {
             LOCAL_KEY_PAIR,
             KeyProperties.PURPOSE_SIGN or KeyProperties.PURPOSE_VERIFY
                     or KeyProperties.PURPOSE_AGREE_KEY
+                    or KeyProperties.PURPOSE_ENCRYPT
+                    or KeyProperties.PURPOSE_DECRYPT
         ).run {
             setKeySize(384)
-            setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA512)
+            setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA384, KeyProperties.DIGEST_SHA512)
             setRandomizedEncryptionRequired(true)
             build()
         }
 
         kpg.initialize(parameterSpec)
 
-        kpg.generateKeyPair()
+        return kpg.generateKeyPair()
     }
 
     @RequiresApi(Build.VERSION_CODES.S)

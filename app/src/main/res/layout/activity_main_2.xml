@@ -7,28 +7,196 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tvPlainText"
-        android:layout_width="match_parent"
+        android:id="@+id/tvSupportStrongBox"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_margin="16dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
 
+        />
+
+
+    <TextView
+        android:id="@+id/tvSecurityLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text=""
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSupportStrongBox"
+
+        />
+
+    <TextView
+        android:id="@+id/tvPlainTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Plain Text: "
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvPlainText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSecurityLevel"
+        tools:layout_editor_absoluteY="16dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tvPlainText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Hello"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvPlainTextLabel"
+        app:layout_constraintTop_toBottomOf="@id/tvSecurityLevel"
+        tools:layout_editor_absoluteY="16dp" />
+
+
+    <TextView
+        android:id="@+id/tvSignLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Sign: "
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvSignedText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPlainTextLabel" />
+
+    <TextView
+        android:id="@+id/tvSignedText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_margin="16dp"
+        android:text=""
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvSignLabel"
+        app:layout_constraintTop_toBottomOf="@id/tvPlainText" />
+
+
+    <TextView
+        android:id="@+id/tvVerifyLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Verify: "
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvVerifiedText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSignLabel" />
+
+    <TextView
+        android:id="@+id/tvVerifiedText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text=""
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvSignLabel"
+        app:layout_constraintTop_toBottomOf="@id/tvSignedText" />
+
+
+    <TextView
+        android:id="@+id/tvEncryptLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Encrypt: "
+        app:layout_constraintEnd_toStartOf="@+id/tvEncryptedText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvVerifyLabel" />
+
+    <TextView
+        android:id="@+id/tvEncryptedText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvEncryptLabel"
+        app:layout_constraintTop_toBottomOf="@id/tvVerifiedText"
+
+        />
+
+
+    <TextView
+        android:id="@+id/tvKeyAgreementLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Key Agreement: "
+        app:layout_constraintEnd_toStartOf="@+id/tvKeyAgreement"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvEncryptLabel"
+        />
+
+    <TextView
+        android:id="@+id/tvKeyAgreement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text=""
+        app:layout_constraintTop_toBottomOf="@id/tvEncryptedText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvKeyAgreementLabel"
+        />
+
+    <Button
+        android:id="@+id/btnEcKeyEncrypt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Encrypt [EC Key]"
+        app:layout_constraintBottom_toTopOf="@+id/btnGenKeyAgreement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnGenKeyAgreement"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Generate Key Agreement"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/btnVerify"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Verify"
+        app:layout_constraintBottom_toTopOf="@+id/btnEcKeyEncrypt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSign"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Sign"
+        app:layout_constraintBottom_toTopOf="@+id/btnVerify"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
